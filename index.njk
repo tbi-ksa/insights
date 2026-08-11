@@ -1,0 +1,46 @@
+---
+title: "Research from TBI"
+description: "Market signals, capability guides and named case studies from TBI Saudi Executive Education — for business leaders operating in the Kingdom of Saudi Arabia."
+layout: base.njk
+---
+
+<section class="hero">
+  <div class="container">
+    <span class="eyebrow on-dark">TBI Research</span>
+    <h1 class="display">The signal beneath the noise</h1>
+    <p class="meta">Capability guides for the operators who compound in the long run. Named case studies from the KSA verticals we work in. Market-signal insights the day the mechanism becomes clear.</p>
+  </div>
+</section>
+
+<section>
+  <div class="grid">
+    <div class="filters" role="tablist" aria-label="Filter insights by type">
+      <span class="chip active" data-filter="all">Everything</span>
+      <span class="chip" data-filter="capability">Capabilities</span>
+      <span class="chip" data-filter="case-study">Case studies</span>
+      <span class="chip" data-filter="signal">Signals</span>
+    </div>
+    <div class="card-grid" id="insights-grid">
+      {% for item in collections.allInsights %}
+        {% include "partials/card.njk" %}
+      {% endfor %}
+      {% if collections.allInsights | length == 0 %}
+        <p>The first pieces will publish here shortly.</p>
+      {% endif %}
+    </div>
+  </div>
+</section>
+
+<script>
+  // Filter chips (progressive enhancement — server-rendered grid works without JS).
+  document.addEventListener("click", (e) => {
+    const chip = e.target.closest(".chip");
+    if (!chip) return;
+    const filter = chip.dataset.filter;
+    document.querySelectorAll(".chip").forEach(c => c.classList.toggle("active", c === chip));
+    document.querySelectorAll("#insights-grid .card").forEach(card => {
+      const t = card.classList.contains("type-" + filter) || filter === "all";
+      card.style.display = t ? "" : "none";
+    });
+  });
+</script>

@@ -1,0 +1,10 @@
+{# Card partial — expects `item` in context (an 11ty collection item) #}
+<article class="card type-{{ item.data.type }}">
+  <span class="eyebrow">{{ item.data.typeLabel }}{% if item.data.vertical %} · {{ item.data.vertical | verticalLabel }}{% endif %}</span>
+  <h2 class="card-title"><a href="{{ item.url }}">{{ item.data.title }}</a></h2>
+  {% if item.data.summary %}<p class="card-summary">{{ item.data.summary }}</p>{% endif %}
+  <div class="card-meta">
+    <span>{{ item.data.date | readableDate }}</span>
+    {% if item.data.status %}<span><span class="badge status-{{ item.data.status }}">{{ item.data.status }}</span></span>{% endif %}
+  </div>
+</article>

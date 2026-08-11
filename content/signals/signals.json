@@ -1,0 +1,6 @@
+{
+  "type": "signal",
+  "typeLabel": "Market signal",
+  "tags": ["signal"],
+  "permalink": "/signals/{{ page.fileSlug }}/"
+}

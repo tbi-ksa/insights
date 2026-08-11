@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="color-scheme" content="dark light">
+<title>{{ title }} · TBI Research</title>
+<meta name="description" content="{{ description or 'TBI Research — market-signal insights and capability guides for business leaders in the Kingdom of Saudi Arabia.' }}">
+<meta property="og:title" content="{{ title }} · TBI Research">
+<meta property="og:description" content="{{ description or 'TBI Research — market-signal insights and capability guides for business leaders in the Kingdom of Saudi Arabia.' }}">
+<meta property="og:image" content="https://tbi-ksa.github.io/insights/assets/preview.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://tbi-ksa.github.io/insights/assets/preview.jpg">
+<link rel="stylesheet" href="/insights/base.css">
+</head>
+<body>
+{% include "partials/header.njk" %}
+
+{% if type %}
+<article>
+  <header class="hero">
+    <div class="container">
+      <span class="eyebrow on-dark">{{ typeLabel }}{% if vertical %} · {{ vertical | verticalLabel }}{% endif %}</span>
+      <h1>{{ title }}</h1>
+      <p class="meta">
+        <span>TBI Research</span>
+        <span>{{ date | readableDate }}</span>
+        {% if status %}<span><span class="badge status-{{ status }}">{{ status }}</span></span>{% endif %}
+      </p>
+    </div>
+  </header>
+  <section class="article-body">
+    <div class="container reading">
+      {{ content | safe }}
+      {% if type == "capability" or type == "case-study" %}
+        {% include "partials/gate.njk" %}
+      {% elif type == "signal" %}
+        {% include "partials/cta-signal.njk" %}
+      {% endif %}
+    </div>
+  </section>
+</article>
+{% else %}
+{{ content | safe }}
+{% endif %}
+
+{% include "partials/footer.njk" %}
+</body>
+</html>

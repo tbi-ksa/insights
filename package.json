@@ -1,0 +1,14 @@
+{
+  "name": "tbi-insights",
+  "version": "0.1.0",
+  "private": true,
+  "description": "TBI Research — market-signal insights and capability guides. Static site published to tbi-ksa.github.io/insights/.",
+  "scripts": {
+    "build": "eleventy",
+    "serve": "eleventy --serve",
+    "clean": "rm -rf _site"
+  },
+  "devDependencies": {
+    "@11ty/eleventy": "^3.0.0"
+  }
+}

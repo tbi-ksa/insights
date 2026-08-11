@@ -1,0 +1,6 @@
+{
+  "type": "case-study",
+  "typeLabel": "Case study",
+  "tags": ["case-study"],
+  "permalink": "/case-studies/{{ page.fileSlug }}/"
+}

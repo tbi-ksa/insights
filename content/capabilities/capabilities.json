@@ -1,0 +1,6 @@
+{
+  "type": "capability",
+  "typeLabel": "Capability guide",
+  "tags": ["capability"],
+  "permalink": "/capabilities/{{ page.fileSlug }}/"
+}

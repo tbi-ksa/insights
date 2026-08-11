@@ -1,0 +1,27 @@
+<aside class="gate" aria-labelledby="gate-heading">
+  <h2 id="gate-heading">Read the deeper brief</h2>
+  <p>The full analysis behind this piece — with per-vertical implications, cost estimates and an action checklist — is available as a PDF. Tell us who you are; we will email it to you.</p>
+  {# Formspree endpoint — set FORMSPREE_ENDPOINT in the fork and inject at build time. #}
+  <form action="https://formspree.io/f/FORMSPREE_ENDPOINT" method="POST">
+    <input type="hidden" name="insight" value="{{ title }}">
+    <input type="hidden" name="_subject" value="TBI-Insights: brief request — {{ title }}">
+    <div class="field">
+      <label for="name">Your name</label>
+      <input id="name" type="text" name="name" required autocomplete="name">
+    </div>
+    <div class="field">
+      <label for="organization">Organization</label>
+      <input id="organization" type="text" name="organization" required autocomplete="organization">
+    </div>
+    <div class="field">
+      <label for="whatsapp">WhatsApp (with country code)</label>
+      <input id="whatsapp" type="tel" name="whatsapp" required autocomplete="tel" placeholder="+966 …">
+    </div>
+    <div class="field">
+      <label for="email">Email</label>
+      <input id="email" type="email" name="email" required autocomplete="email">
+    </div>
+    <button type="submit">Send me the brief</button>
+    <p class="caption">We reply within one working day. Your details reach TBI Research and are not shared.</p>
+  </form>
+</aside>
