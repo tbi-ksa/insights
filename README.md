@@ -22,6 +22,12 @@ npm run build   # → _site/
 npm run serve   # → http://localhost:8080/insights/ with live reload
 ```
 
+## Gate (lead capture)
+
+`_includes/partials/gate.njk` renders on capability and case-study pieces. A piece with a `download` frontmatter URL unlocks that asset in place once the Formspree submission succeeds; `gate.heading`, `gate.body` and `gate.button` override the copy.
+
+The Formspree form ID lives in `_data/site.json` as `formspreeId`. While it is empty the gate shows a WhatsApp/email request instead of a form, so no lead is ever silently dropped. Gated assets live in `assets/briefs/` (copied, not templated; see `.eleventyignore`) and carry `noindex`. On a public static site this is a soft gate: the asset URL itself is not secret.
+
 ## Deploy
 
 GitHub Actions (`.github/workflows/deploy.yml`) builds on push to `main` and publishes to GitHub Pages.

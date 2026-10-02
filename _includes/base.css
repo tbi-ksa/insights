@@ -253,6 +253,13 @@ code, .mono { font-family: var(--font-label); font-size: var(--text-label); back
 .gate button { font-family: var(--font-display); font-size: var(--text-body); font-weight: 600; padding: var(--sp-3) var(--sp-8); background: var(--dark-bg); color: var(--dark-ink); border: 0; border-radius: var(--r-md); cursor: pointer; transition: background var(--dur-fast) var(--ease-out); margin-top: var(--sp-3); }
 .gate button:hover { background: var(--dark-bg-alt); }
 .gate .caption { margin-top: var(--sp-4); font-size: var(--text-caption); color: var(--ink-3); }
+.gate .gate-trap { position: absolute; left: -9999px; width: 1px; height: 1px; opacity: 0; }
+.gate button:disabled { opacity: .6; cursor: progress; }
+.gate .gate-error { margin-top: var(--sp-4); color: var(--ink); }
+.gate .gate-done p { margin: 0 0 var(--sp-4); }
+.gate .gate-open, .gate .gate-fallback a { font-family: var(--font-display); font-weight: 600; }
+.gate .gate-open { display: inline-block; padding: var(--sp-3) var(--sp-8); background: var(--dark-bg); color: var(--dark-ink); border-radius: var(--r-md); text-decoration: none; }
+.gate .gate-open:hover { background: var(--dark-bg-alt); }
 
 /* Signal insights are ungated — a lighter CTA block instead */
 .cta-inline {

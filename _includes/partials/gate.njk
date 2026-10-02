@@ -1,10 +1,19 @@
+{#- Gate (Name + Organization + WhatsApp + Email) for capability & case-study pieces.
+    Per-piece copy comes from frontmatter `gate.{heading,body,button}`; `download` is the
+    asset the gate unlocks. Submission goes to Formspree via fetch (works on the free
+    plan); on success the download link is revealed in place. Without JS the form still
+    posts to Formspree, so the lead is captured either way.
+    Until site.formspreeId is set, pieces with a download show a WhatsApp/email request
+    instead of a form, so the site never ships a gate that silently drops leads. -#}
+{%- set g = gate or {} -%}
 <aside class="gate" aria-labelledby="gate-heading">
-  <h2 id="gate-heading">Read the deeper brief</h2>
-  <p>The full analysis behind this piece — with per-vertical implications, cost estimates and an action checklist — is available as a PDF. Tell us who you are; we will email it to you.</p>
-  {# Formspree endpoint — set FORMSPREE_ENDPOINT in the fork and inject at build time. #}
-  <form action="https://formspree.io/f/FORMSPREE_ENDPOINT" method="POST">
+  <h2 id="gate-heading">{{ g.heading or "Read the deeper brief" }}</h2>
+  <p>{{ g.body or "The full analysis behind this piece — with per-vertical implications, cost estimates and an action checklist. Tell us who you are; we will send it to you." }}</p>
+  {%- if site.formspreeId %}
+  <form class="gate-form" action="https://formspree.io/f/{{ site.formspreeId }}" method="POST" data-download="{{ download or '' }}">
     <input type="hidden" name="insight" value="{{ title }}">
-    <input type="hidden" name="_subject" value="TBI-Insights: brief request — {{ title }}">
+    <input type="hidden" name="_subject" value="TBI Research: download — {{ title }}">
+    <input type="text" name="_gotcha" class="gate-trap" tabindex="-1" autocomplete="off" aria-hidden="true">
     <div class="field">
       <label for="name">Your name</label>
       <input id="name" type="text" name="name" required autocomplete="name">
@@ -15,13 +24,45 @@
     </div>
     <div class="field">
       <label for="whatsapp">WhatsApp (with country code)</label>
-      <input id="whatsapp" type="tel" name="whatsapp" required autocomplete="tel" placeholder="+966 …">
+      <input id="whatsapp" type="tel" name="whatsapp" required autocomplete="tel" placeholder="+966 …" pattern="\+?[0-9 ()\-]{8,}">
     </div>
     <div class="field">
       <label for="email">Email</label>
       <input id="email" type="email" name="email" required autocomplete="email">
     </div>
-    <button type="submit">Send me the brief</button>
-    <p class="caption">We reply within one working day. Your details reach TBI Research and are not shared.</p>
+    <button type="submit">{{ g.button or "Send me the brief" }}</button>
+    <p class="gate-error" role="alert" hidden>That did not go through. Try again, or <a href="https://wa.me/{{ site.whatsapp }}">message us on WhatsApp</a> and we will send it.</p>
+    <p class="caption">Your details reach TBI Research only and are not shared.</p>
   </form>
+  {%- if download %}
+  <div class="gate-done" hidden tabindex="-1">
+    <p><strong>Thank you.</strong> Your copy is ready.</p>
+    <a class="gate-open" href="{{ download }}" target="_blank" rel="noopener">{{ g.button or "Open the brief" }} &#8599;</a>
+  </div>
+  <script>
+  (() => {
+    const form = document.currentScript.parentElement.querySelector(".gate-form");
+    const done = form.parentElement.querySelector(".gate-done");
+    const err = form.querySelector(".gate-error");
+    form.addEventListener("submit", async (e) => {
+      e.preventDefault();
+      const btn = form.querySelector("button[type=submit]");
+      btn.disabled = true; err.hidden = true;
+      try {
+        const res = await fetch(form.action, { method: "POST", body: new FormData(form), headers: { Accept: "application/json" } });
+        if (!res.ok) throw new Error(res.status);
+        form.hidden = true; done.hidden = false; done.focus();
+      } catch (_) {
+        err.hidden = false; btn.disabled = false;
+      }
+    });
+  })();
+  </script>
+  {%- endif %}
+  {%- else %}
+  <p class="gate-fallback">
+    <a href="https://wa.me/{{ site.whatsapp }}?text={{ ('Please send me: ' + title) | urlencode }}">Request it on WhatsApp</a>
+    or email <a href="mailto:{{ site.email }}?subject={{ ('Request: ' + title) | urlencode }}">{{ site.email }}</a>.
+  </p>
+  {%- endif %}
 </aside>
