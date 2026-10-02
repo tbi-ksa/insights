@@ -38,3 +38,24 @@ jobs:
     steps:
       - id: deployment
         uses: actions/deploy-pages@v4
+
+  # Tell the main TBI KSA site to rebuild so its "From TBI Research" band picks
+  # up whatever just published here. No-ops until SITE_DISPATCH_TOKEN (a PAT with
+  # repo scope on tbi-ksa/tbi-ksa.github.io) is set as a repo secret.
+  notify-site:
+    needs: deploy
+    runs-on: ubuntu-latest
+    steps:
+      - name: Fire insights_updated dispatch
+        env:
+          DISPATCH_TOKEN: ${{ secrets.SITE_DISPATCH_TOKEN }}
+        run: |
+          if [ -z "$DISPATCH_TOKEN" ]; then
+            echo "SITE_DISPATCH_TOKEN not set — skipping cross-repo rebuild trigger."
+            exit 0
+          fi
+          curl -fsS -X POST \
+            -H "Authorization: Bearer $DISPATCH_TOKEN" \
+            -H "Accept: application/vnd.github+json" \
+            https://api.github.com/repos/tbi-ksa/tbi-ksa.github.io/dispatches \
+            -d '{"event_type":"insights_updated"}'
