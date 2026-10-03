@@ -30,6 +30,21 @@ html[data-theme="dark"] .cta{background:#112650;border:1px solid var(--line)}
 .cta a{color:#fff;font-weight:700;text-decoration:none;border:1px solid rgba(255,255,255,.35);border-radius:999px;padding:9px 16px;font-size:.88rem}
 .cta a.primary{background:var(--teal);border-color:var(--teal);color:#061230}
 .cta a:hover{border-color:#fff}
+.guide{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);box-shadow:var(--shadow);padding:24px}
+.guide h2{margin-bottom:6px}
+.guide .gl{color:var(--ink-soft);max-width:68ch;font-size:.97rem}
+.gsteps{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:14px;margin-top:18px}
+.gstep{background:var(--surface-2);border-radius:10px;padding:14px 16px}
+.gstep .gn{display:inline-block;font-family:var(--flabel);font-size:.8rem;font-weight:700;letter-spacing:.08em;color:var(--teal-ink);margin-bottom:2px}
+.gstep b{display:block;font-family:var(--fdisplay);color:var(--ink);margin:2px 0 4px}
+.gstep p{font-size:.88rem;color:var(--ink-soft)}
+.gread{margin-top:18px;border-top:1px dashed var(--line);padding-top:14px;display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:10px 22px}
+.gread p{font-size:.86rem;color:var(--ink-soft)}
+.gread p b{color:var(--ink)}
+.gloss dl{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:12px 26px;margin-top:6px}
+.gloss dt{font-family:var(--fdisplay);font-weight:800;color:var(--ink);font-size:.92rem}
+.gloss dd{font-size:.86rem;color:var(--ink-soft);margin:1px 0 0}
+.gnote{margin-top:14px;font-size:.8rem;color:var(--ink-faint)}
 body h2{font-size:clamp(1.45rem,2.8vw,1.9rem)}
 body .pulse h2{font-size:1.4rem}
 
@@ -244,6 +259,27 @@ body .pulse h2{font-size:1.4rem}
   </div>
 </header>
 
+<section id="guide" style="padding-top:28px;padding-bottom:0">
+  <div class="wrap">
+    <div class="guide">
+      <span class="eyebrow">How to use this page</span>
+      <h2>Find your sector, see what is squeezing it, and where to act first</h2>
+      <p class="gl">This page maps the pressures on 20 Saudi business sectors in 2026. You do not need to read it top to bottom. Find your sector, open its card, and read what applies to you. Unfamiliar terms are explained in the <a href="#glossary" style="color:var(--accent)">plain-language glossary</a> at the end.</p>
+      <div class="gsteps">
+        <div class="gstep"><span class="gn">STEP 1</span><b>Read the three forces</b><p>Saudization, mandatory digital compliance and Vision 2030 demand affect every sector. They are the reason this page exists.</p></div>
+        <div class="gstep"><span class="gn">STEP 2</span><b>Find your sector</b><p>Use the Cluster buttons to narrow the list, or the Force buttons to see which sectors one pressure hits hardest. Tap a card to open it.</p></div>
+        <div class="gstep"><span class="gn">STEP 3</span><b>Act on the 90-day on-ramp</b><p>Every card includes a first step you can start within 90 days. Begin with the one tied to a deadline.</p></div>
+      </div>
+      <div class="gread">
+        <p><b>Top pain</b> is the problem that costs operators in this sector the most money or time.</p>
+        <p><b>The two bars</b> compare a typical Saudi operator with the best 10%. A fuller bar means a wider gap you could close.</p>
+        <p><b>Regulator watch</b> lists the bodies and rules that can change your costs or stop you operating.</p>
+        <p><b>VERIFIED and CITED</b> labels show how we checked each rule: VERIFIED against the regulator's own text, CITED from a credible secondary source.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
 <section id="pulse" style="padding-top:34px;padding-bottom:0">
   <div class="wrap">
     <div class="pulse">
@@ -336,6 +372,29 @@ body .pulse h2{font-size:1.4rem}
         <div class="step"><div class="sn">3</div><p><b>Treat every regulatory date as live.</b> Operating benchmarks move slowly; Saudization ratios, fee schedules and effective dates do not. Re-check them before each decision.</p></div>
       </div>
     </div>
+  </div>
+</section>
+
+<section id="glossary">
+  <div class="wrap gloss">
+    <div class="kicker"><span class="eyebrow">Glossary</span></div>
+    <h2>The terms on this page, in plain language</h2>
+    <dl>
+      <div><dt>Saudization (localisation)</dt><dd>Government rules that require companies to employ a minimum share of Saudi nationals, by sector and by job type.</dd></div>
+      <div><dt>Nitaqat</dt><dd>The rating system that sorts each company into bands by its share of Saudi staff. Your band decides which government services you can use.</dd></div>
+      <div><dt>Qiwa</dt><dd>The Ministry of Human Resources platform for employment contracts, work permits and your Saudization record.</dd></div>
+      <div><dt>Najiz</dt><dd>The Ministry of Justice online portal. A documented wage clause can now be enforced through it.</dd></div>
+      <div><dt>Ajeer</dt><dd>The platform for lending a worker from one company to another. You need a permit before the worker starts at your site.</dd></div>
+      <div><dt>ZATCA and e-invoicing</dt><dd>ZATCA is the tax and customs authority. Its e-invoicing programme requires invoices to be created and sent through its Fatoora system, in waves by company revenue.</dd></div>
+      <div><dt>FASAH</dt><dd>The platform used to clear goods through Saudi customs.</dd></div>
+      <div><dt>SFDA</dt><dd>The Saudi Food and Drug Authority. It registers and inspects food, drugs and medical devices.</dd></div>
+      <div><dt>SASO and SABER</dt><dd>SASO sets product standards. SABER is the online system where importers obtain product conformity certificates.</dd></div>
+      <div><dt>nphies</dt><dd>The national platform where health insurers and providers exchange insurance claims electronically.</dd></div>
+      <div><dt>PDPL</dt><dd>The Personal Data Protection Law. It sets how you collect, store and share personal data.</dd></div>
+      <div><dt>Vision 2030 programmes</dt><dd>National programmes such as NIDLP (industry and logistics), HSTP (health) and NTS (tourism) that create demand in specific sectors. A PIF-linked project is backed by the Public Investment Fund.</dd></div>
+      <div><dt>KPI and top decile</dt><dd>A KPI is a number you track to judge performance. The top decile is the best-performing 10% of operators, used here as the benchmark.</dd></div>
+    </dl>
+    <p class="gnote">These are plain-language summaries to help you read the page. They are not legal definitions. Check the regulator's own text before acting.</p>
   </div>
 </section>
 
