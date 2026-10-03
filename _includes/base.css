@@ -168,8 +168,8 @@ code, .mono { font-family: var(--font-label); font-size: var(--text-label); back
 }
 .site-header .container { display: flex; align-items: center; justify-content: space-between; padding-top: var(--sp-4); padding-bottom: var(--sp-4); }
 .site-header a { color: var(--dark-ink); border-bottom: 0; font-family: var(--font-display); font-weight: 600; }
-.site-header .masthead { display: flex; align-items: baseline; gap: var(--sp-3); }
-.site-header .masthead .name { font-size: 20px; letter-spacing: -0.01em; }
+.site-header .masthead { display: flex; align-items: center; gap: var(--sp-4); }
+.site-header .masthead img { height: 52px; width: auto; display: block; }
 .site-header .masthead .kicker { font-family: var(--font-label); font-size: var(--text-label); font-weight: 700; letter-spacing: var(--track-label); text-transform: uppercase; color: var(--dark-ink-2); }
 .site-header nav { display: flex; gap: var(--sp-6); font-size: 15px; }
 .site-header nav a:hover { color: var(--dark-accent); }
@@ -280,6 +280,7 @@ code, .mono { font-family: var(--font-label); font-size: var(--text-label); back
 /* Mobile */
 @media (max-width: 700px) {
   .site-header .container { flex-direction: column; align-items: flex-start; gap: var(--sp-3); }
+  .site-header .masthead img { height: 44px; }
   .site-header nav { gap: var(--sp-4); flex-wrap: wrap; }
   .site-footer .container { grid-template-columns: 1fr; gap: var(--sp-6); }
   .hero { padding: var(--sp-12) 0 var(--sp-8); }
