@@ -48,6 +48,29 @@ html[data-theme="dark"] .cta{background:#112650;border:1px solid var(--line)}
 body h2{font-size:clamp(1.45rem,2.8vw,1.9rem)}
 body .pulse h2{font-size:1.4rem}
 
+/* --- accessibility + usability fixes (2026-10-03) --- */
+:focus-visible{outline:3px solid var(--accent);outline-offset:2px;border-radius:4px}
+html[data-theme="dark"] :focus-visible{outline-color:var(--gold)}
+.sr-only{position:absolute;width:1px;height:1px;margin:-1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+.skip{position:absolute;left:12px;top:-64px;z-index:60;background:var(--navy);color:#fff;font-weight:700;padding:10px 16px;border-radius:8px;text-decoration:none}
+html[data-theme="dark"] .skip{background:var(--gold);color:#1a1400}
+.skip:focus{top:12px}
+.hdr-actions{display:flex;gap:10px;align-items:center}
+.hdr-link{font-weight:700;font-size:.85rem;color:var(--accent);text-decoration:none;border:1px solid var(--accent);border-radius:999px;padding:7px 14px}
+.hdr-link:hover{background:var(--surface-2)}
+html[data-theme="dark"] .tag{color:var(--ink-soft)}
+.card-btn{background:none;border:0;padding:0;margin:0;font:inherit;letter-spacing:inherit;color:inherit;text-align:start;flex:1;display:flex;justify-content:space-between;gap:8px;align-items:flex-start;cursor:pointer}
+body .detail{visibility:hidden;transition:max-height .35s ease,visibility 0s .35s}
+.card[data-open="true"] .detail{visibility:visible;transition:max-height .35s ease,visibility 0s}
+.card[data-open="true"] .car{transform:rotate(45deg);color:var(--teal-ink)}
+.card[data-open="true"] .detail{max-height:640px;border-top:1px solid var(--line)}
+body .grid{align-items:start}
+.empty{padding:28px 0;color:var(--ink-soft);font-size:.97rem}
+.empty .chip{margin-left:8px}
+@media(min-width:900px){html{scroll-padding-top:130px}}
+@media(max-width:899px){body .controls{position:static}}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}body .detail{transition:none}}
+
   :root{
     /* TBI Executive Education KSA — light */
     --navy:#091E3D; --teal:#00A5AA; --gold:#D4A843; --accent:#004E80;
@@ -164,10 +187,10 @@ body .pulse h2{font-size:1.4rem}
   .fdot{width:9px;height:9px;border-radius:50%;display:inline-block}
   .card h4{font-size:.98rem;color:var(--navy);font-weight:800;line-height:1.25;display:flex;justify-content:space-between;gap:8px;align-items:start}
   .card h4 .car{color:var(--ink-faint);font-weight:700;transition:transform .2s;font-size:1.1rem;line-height:1}
-  .card[aria-expanded="true"] .car{transform:rotate(45deg);color:var(--teal-ink)}
+  
   .card .name{font-size:.8rem;font-weight:700;letter-spacing:.01em;color:var(--teal-ink);margin-bottom:4px}
   .detail{max-height:0;overflow:hidden;transition:max-height .35s ease;border-top:0 solid var(--line)}
-  .card[aria-expanded="true"] .detail{max-height:640px;border-top:1px solid var(--line)}
+  
   .detail-in{padding:14px 16px 16px}
   .drow{margin-bottom:12px}
   .drow .k{font-size:.74rem;font-weight:700;letter-spacing:.01em;color:var(--ink-faint);margin-bottom:4px}
@@ -208,6 +231,7 @@ body .pulse h2{font-size:1.4rem}
 </style>
 </head>
 <body>
+<a class="skip" href="#main">Skip to the content</a>
 <header>
   <div class="wrap">
     <div class="brandbar">
@@ -246,7 +270,7 @@ body .pulse h2{font-size:1.4rem}
 <path fill-rule="nonzero" fill="currentColor" fill-opacity="1" d="M 1681.464844 753.484375 L 1689.367188 753.484375 C 1693.625 753.484375 1696.890625 752.238281 1699.171875 749.738281 C 1701.449219 747.238281 1702.589844 743.757812 1702.589844 739.300781 C 1702.589844 734.84375 1701.449219 731.363281 1699.171875 728.863281 C 1696.890625 726.367188 1693.625 725.117188 1689.367188 725.117188 L 1681.464844 725.117188 Z M 1677.210938 721.265625 L 1689.367188 721.265625 C 1694.839844 721.265625 1699.164062 722.855469 1702.335938 726.027344 C 1705.476562 729.203125 1707.046875 733.628906 1707.046875 739.300781 C 1707.046875 744.90625 1705.476562 749.316406 1702.335938 752.523438 C 1699.128906 755.730469 1694.804688 757.335938 1689.367188 757.335938 L 1677.210938 757.335938 Z M 1677.210938 721.265625 "/>
 <path fill-rule="nonzero" fill="currentColor" fill-opacity="1" d="M 1716.371094 757.335938 L 1712.113281 757.335938 L 1712.113281 721.265625 L 1716.371094 721.265625 Z M 1716.371094 757.335938 "/>
 </svg></span>
-      <button class="tgl" id="themeBtn" aria-label="Toggle colour theme">◐ <span id="themeLbl">Dark</span></button>
+      <div class="hdr-actions"><a class="hdr-link" href="#talk">Talk to us</a><button class="tgl" id="themeBtn"><span aria-hidden="true">◐</span> <span id="themeLbl">Dark</span> mode</button></div>
     </div>
     <p class="eyebrow">TBI Research · October 2026</p>
     <h1>Three forces are squeezing <span class="hl">all 20 verticals</span> at once — and opening a 12-month automation window</h1>
@@ -258,6 +282,7 @@ body .pulse h2{font-size:1.4rem}
     </div>
   </div>
 </header>
+<main id="main">
 
 <section id="guide" style="padding-top:28px;padding-bottom:0">
   <div class="wrap">
@@ -347,7 +372,7 @@ body .pulse h2{font-size:1.4rem}
         <button class="chip" data-cluster="C" aria-pressed="false">C · Trade &amp; mobility</button>
         <button class="chip" data-cluster="D" aria-pressed="false">D · Health &amp; craft</button>
         <button class="chip" data-cluster="E" aria-pressed="false">E · Services</button>
-        <span class="count" id="count">20 of 20 verticals</span>
+        <span class="count" id="count" role="status" aria-live="polite">20 of 20 verticals</span>
       </div>
       <div class="row" style="margin-top:8px">
         <span class="clab">Force</span>
@@ -360,6 +385,7 @@ body .pulse h2{font-size:1.4rem}
     </div>
   </div>
   <div class="wrap" id="clusters"></div>
+  <div class="wrap"><p class="empty" id="empty" hidden>No sector matches both filters.<button class="chip" id="resetF" type="button">Clear filters</button></p></div>
 </section>
 
 <section id="monday">
@@ -414,6 +440,7 @@ body .pulse h2{font-size:1.4rem}
   </div>
 </section>
 
+</main>
 <footer>
   <div class="wrap">
     <div class="legend">
@@ -477,7 +504,7 @@ let curCluster="all", curForce="all", curUpd=false;
 
 function esc(s){return s.replace(/&/g,"&amp;").replace(/</g,"&lt;")}
 function buildCard(v){
-  const fdots=v.f.map(f=>`<span class="fdot" title="${FNAME[f]}" style="background:${FCOL[f]}"></span>`).join("");
+  const fdots=v.f.map(f=>`<span class="fdot" aria-hidden="true" style="background:${FCOL[f]}"></span><span class="sr-only">Force: ${FNAME[f]}.</span>`).join("");
   const indTag="";
   const u=UPD[v.id];
   const updTag=u?`<span class="tag upd">2026 exposure</span>`:"";
@@ -486,16 +513,16 @@ function buildCard(v){
   const kpis=v.ind?`<p class="kpi-pending">We track ${v.kpis.map(k=>esc(k.l)).join(" and ")}. Benchmarks for this vertical are being validated.</p>`:v.kpis.map(k=>`
     <div class="kpi">
       <div class="klab"><span>${esc(k.l)}</span></div>
-      <div class="track"><div class="fill" data-g="${k.g}"></div></div>
+      <div class="track" aria-hidden="true"><div class="fill" data-g="${k.g}"></div></div>
       <div class="ends"><span class="ksa">KSA ${esc(k.ksa)}</span><span class="wc">Top decile ${esc(k.wc)}</span></div>
     </div>`).join("");
-  return `<article class="card" data-cluster="${v.cl}" data-force="${v.f.join(",")}" data-upd="${u?1:0}" aria-expanded="false">
-    <div class="card-top" role="button" tabindex="0">
+  return `<article class="card" data-cluster="${v.cl}" data-force="${v.f.join(",")}" data-upd="${u?1:0}" data-open="false">
+    <div class="card-top">
       <div class="tags"><span class="tag">${v.id}</span>${fdots}${indTag}${updTag}</div>
       <div class="name">${esc(v.name)}</div>
-      <h4><span>${esc(v.head)}</span><span class="car" aria-hidden="true">+</span></h4>
+      <h4><button type="button" class="card-btn" aria-expanded="false" aria-controls="d-${v.id}"><span>${esc(v.head)}</span><span class="car" aria-hidden="true">+</span></button></h4>
     </div>
-    <div class="detail"><div class="detail-in">
+    <div class="detail" id="d-${v.id}"><div class="detail-in">
       ${updRow}
       <div class="drow"><div class="k">Top pain</div><div class="v">${esc(v.pain)}</div></div>
       <div class="drow"><div class="k">Anchor KPIs · gap to top decile (indicative)</div>${kpis}</div>
@@ -520,14 +547,14 @@ function render(){
 }
 function wireCards(){
   document.querySelectorAll(".card-top").forEach(t=>{
-    const card=t.closest(".card");
-    const toggle=()=>{
-      const open=card.getAttribute("aria-expanded")==="true";
-      card.setAttribute("aria-expanded",open?"false":"true");
+    const card=t.closest(".card"), btn=t.querySelector(".card-btn");
+    // the whole top area is clickable for pointer users; keyboard and screen readers use the button
+    t.addEventListener("click",()=>{
+      const open=card.dataset.open==="true";
+      card.dataset.open=open?"false":"true";
+      btn.setAttribute("aria-expanded",open?"false":"true");
       if(!open) animateBars(card);
-    };
-    t.addEventListener("click",toggle);
-    t.addEventListener("keydown",e=>{if(e.key==="Enter"||e.key===" "){e.preventDefault();toggle();}});
+    });
   });
 }
 function animateBars(card){
@@ -553,6 +580,7 @@ function applyFilter(){
   });
   const cnt=document.getElementById("count");
   cnt.textContent=`${shown} of ${DATA.length} verticals`;
+  document.getElementById("empty").hidden=shown>0;
 }
 // chips
 document.querySelectorAll(".chip[data-cluster]").forEach(ch=>{
@@ -578,7 +606,7 @@ document.querySelectorAll(".force").forEach(fc=>{
     document.querySelectorAll(".chip[data-fforce]").forEach(c=>c.setAttribute("aria-pressed",c.dataset.fforce===curForce?"true":"false"));
     if(curForce==="all")document.querySelector('.chip[data-fforce="all"]').setAttribute("aria-pressed","true");
     applyFilter();
-    document.getElementById("verticals").scrollIntoView({behavior:"smooth"});
+    document.getElementById("verticals").scrollIntoView({behavior:window.matchMedia("(prefers-reduced-motion: reduce)").matches?"auto":"smooth"});
   };
   fc.addEventListener("click",act);
   fc.addEventListener("keydown",e=>{if(e.key==="Enter"||e.key===" "){e.preventDefault();act();}});
@@ -591,6 +619,13 @@ document.getElementById("updChip").addEventListener("click",e=>{
   curUpd=!curUpd;
   e.currentTarget.setAttribute("aria-pressed",curUpd?"true":"false");
   applyFilter();
+});
+document.getElementById("resetF").addEventListener("click",()=>{
+  curCluster="all";curForce="all";curUpd=false;
+  document.querySelectorAll(".chip[data-cluster]").forEach(c=>c.setAttribute("aria-pressed",c.dataset.cluster==="all"?"true":"false"));
+  document.querySelectorAll(".chip[data-fforce]").forEach(c=>c.setAttribute("aria-pressed",c.dataset.fforce==="all"?"true":"false"));
+  document.getElementById("updChip").setAttribute("aria-pressed","false");
+  syncForceCards();applyFilter();
 });
 // theme
 const root=document.documentElement;
