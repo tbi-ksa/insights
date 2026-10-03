@@ -24,3 +24,14 @@ Since 15 April 2026, the Ministry of Human Resources counts only Saudi employees
 ## What it deliberately leaves out
 
 The calculator does not tell you which Nitaqat band you sit in. Bands depend on your activity, your size class and the year, and they are set by the ministry. Reserved professions and how your roles are classified can also change who counts. If you want your band position and the cheapest way to move up, send us your activity, headcount and size.
+
+## Other numbers owners ask for
+
+These are the headline tax figures, each checked against ZATCA's own texts as of 3 October 2026.
+
+- **VAT:** the standard rate is 15%, in effect since 1 July 2020 ([ZATCA guideline](https://zatca.gov.sa/ar/HelpCenter/guidelines/Documents/VAT15.pdf)).
+- **Registration:** VAT registration is mandatory when taxable supplies over twelve months exceed SAR 375,000, and a Saudi-resident business above SAR 187,500 in supplies or expenses may register voluntarily ([ZATCA invoicing guideline, version 3](https://zatca.gov.sa/en/HelpCenter/guidelines/Documents/Guideline-for-Tax-Invoicing-and-Records-under-VAT-Provisions.pdf)). Transitional provisions apply.
+- **Zakat:** 2.5% of the zakat base, applied to the Saudi and GCC-national share of a Saudi-resident company ([ZATCA FAQ guideline](https://zatca.gov.sa/en/HelpCenter/guidelines/Documents/FAQ's.pdf)).
+- **Corporate income tax:** 20% on the non-Saudi partners' share of a resident company's taxable income. In a company with mixed ownership, income tax applies to the non-Saudi share and zakat to the Saudi and GCC share ([Income Tax Law, Articles 6 and 7](https://zatca.gov.sa/ar/HelpCenter/guidelines/Documents/%D9%86%D8%B8%D8%A7%D9%85%20%D8%B6%D8%B1%D9%8A%D8%A8%D8%A9%20%D8%A7%D9%84%D8%AF%D8%AE%D9%84.pdf)).
+
+Rules change, and your own position depends on your facts. Treat this as a starting reference and confirm it before you act.
